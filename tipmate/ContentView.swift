@@ -7,12 +7,7 @@
 //
 
 // TO DO: add a startup view (orange with white logo)
-// TO DO: add an app icon
-// TO DO: research custom fonts
 // TO DO: research app store/distribution
-// TO DO: clean up and comment existing code
-
-// TO DO: refactor names throughout app
 
 // import packages
 import SwiftUI
@@ -112,11 +107,6 @@ struct ContentView: View {
                     .font(.headline)
                     .frame(alignment: .center)
                     .foregroundColor(Color.blue.opacity(buttonOpacity))
-                    //.onTapGesture {
-                        //self.hideKeyboard()
-                        //self.billInputStr = ""
-                        //self.btnVisible = false
-                    //}
                     .disabled(!btnVisible)
                 }
                 .padding()

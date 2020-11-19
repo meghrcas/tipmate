@@ -8,14 +8,6 @@
 import Foundation
 import SwiftUI
 
-// import the hideKeyboard function from the UIKit packages
-//#if canImport(UIKit)
-//extension View {
-//    func hideKeyboard() {
-//        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-//    }
-//}
-//#endif
 struct textview {
     var text   : String
     var font   : Font
@@ -99,42 +91,3 @@ func formatSliderInput(percentValue: Binding<Double>, percentTextview: textview)
             .padding(.bottom, 10)
     }
 }
-
-//func formatTextFieldInput(billInputValue: Binding<String>, billLabel: textview, billResult: textview) -> some View {
-//    var billValue:  Double?
-//    var btnVisible: Bool = false
-//    var btnOpacity: Double = 0
-//
-//    Group {
-//        HStack {
-//            TextField(billInfoLabel.text, text: billInputValue, onEditingChanged: { _ in
-//                let billValue = atof(billInputValue)
-//                btnOpacity = 100
-//            })
-//            .font(billInfoLabel.font)
-//            .frame(alignment: .leading)
-//            .accentColor(billInfoLabel.color)
-//            .keyboardType(.decimalPad)
-//
-//            Button("enter") {
-//                View.hideKeyboard()
-//                let billInputValue = ""
-//                btnOpacity = 0
-//            }
-//            .font(.headline)
-//            .frame(alignment: .center)
-//            .foregroundColor(Color.blue.opacity(btnOpacity))
-//            .onTapGesture {
-//                hideKeyboard()
-//            }
-//            //.gesture(.hideKeyboard())
-//            .disabled(!btnVisible)
-//        }
-//        .padding()
-//
-//        HStack (alignment: .center) {
-//            formatTextView(textview: billLabel)
-//            formatTextView(textview: billResult)
-//        }
-//    }
-//}
