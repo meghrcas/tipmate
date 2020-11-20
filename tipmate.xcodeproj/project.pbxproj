@@ -14,6 +14,7 @@
 		BE395FFE25666E9700038914 /* tipmateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE395FFD25666E9700038914 /* tipmateTests.swift */; };
 		BE39600925666E9700038914 /* tipmateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39600825666E9700038914 /* tipmateUITests.swift */; };
 		BE39601A25666F5300038914 /* theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39601925666F5300038914 /* theme.swift */; };
+		BE39601F256830F000038914 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE39601E256830F000038914 /* helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		BE39600825666E9700038914 /* tipmateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipmateUITests.swift; sourceTree = "<group>"; };
 		BE39600A25666E9700038914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE39601925666F5300038914 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
+		BE39601E256830F000038914 /* helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				BE395FF425666E9700038914 /* Info.plist */,
 				BE395FF125666E9700038914 /* Preview Content */,
 				BE39601925666F5300038914 /* theme.swift */,
+				BE39601E256830F000038914 /* helpers.swift */,
 			);
 			path = tipmate;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				BE395FEE25666E9500038914 /* ContentView.swift in Sources */,
 				BE39601A25666F5300038914 /* theme.swift in Sources */,
 				BE395FEC25666E9500038914 /* tipmateApp.swift in Sources */,
+				BE39601F256830F000038914 /* helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

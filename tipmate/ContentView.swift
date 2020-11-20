@@ -21,60 +21,58 @@ extension View {
 }
 #endif
 
-// define ContentView structure
+class Check: ObservableObject {
+    @Published var subtotal : Double = 0
+    @Published var percent  : Double = 15
+    
+    func getSubtotal(usrSubtotal: String) {
+        subtotal = atof(usrSubtotal)
+    }
+    
+    func getTip() -> Double {
+        return subtotal * (percent / 100)
+    }
+    
+    func getTotal() -> Double {
+        return subtotal + getTip()
+    }
+    
+}
+
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var percentValue  : Double   = 15
-    @State var billValue     : Double?  = nil
-    @State var billInputStr  : String   = ""
-    @State var btnVisible    : Bool     = false
+    @ObservedObject var check = Check()
+    @State var usrSubtotal: String = ""
+    @State var isVisible: Bool = false
+    @State var btnVisible : Bool = false
+    
+    var visible: Bool {
+        return (check.subtotal > 0 ? true : false)
+    }
+
     
     private var darkModeEnabled: Bool {
         return (colorScheme == .dark) ? true : false
     }
     
-    private var tipResultValue: textview {
-        let t = textview(text: currencyFormatter.string(from: NSNumber(value: tipValue)) ?? "--", font: .title, weight: .regular, color: .green)
-        return t
-    }
-
-    private var totalResultValue: textview {
-        let t = textview(text: currencyFormatter.string(from: NSNumber(value: totalValue)) ?? "--", font: .title, weight: .regular, color: .green)
-        return t
-    }
-
-    private var billResultLabel: textview {
-        let t = textview(text: "bill amount in USD:", font: .headline, weight: .bold, color: Color.green.opacity(billResultOpacity))
-        return t
+    private var tip: String {
+        let str = currencyFormatter.string(from: NSNumber(value: check.getTip())) ?? "--"
+        return str
     }
     
-    private var billResultValue: textview {
-        let bill = billValue ?? 0.00
-        let t = textview(text: "$" + String(format: "%.2f", bill), font: .headline, weight: .regular, color: Color.green.opacity(billResultOpacity))
-        return t
+    private var total: String {
+        let str = currencyFormatter.string(from: NSNumber(value: check.getTotal())) ?? "--"
+        return str
+    }
+    
+    private var subtotal: String {
+        let str = "$" + String(format: "%.2f", check.subtotal)
+        return str
     }
 
-    private var percentResultValue: textview {
-        let t = textview(text: String(format: "%.0f", percentValue) + "%", font: .headline, weight: .regular, color: .green)
-        return t
-    }
-
-    private var tipValue: Double {
-        let bill = billValue ?? 0
-        return bill * (percentValue/100)
-    }
-
-    private var totalValue: Double {
-        (billValue ?? 0) + tipValue
-    }
-        
-    private var billResultOpacity: Double {
-        let bill = billValue ?? 0.00
-        return (bill != 0.00) ? 100 : 0
-    }
-
-    private var buttonOpacity: Double {
-        return btnVisible ? 100 : 0
+    private var percent: String {
+        let str = String(format: "%.0f", check.percent) + "%"
+        return str
     }
 
    private var currencyFormatter: NumberFormatter = {
@@ -86,39 +84,44 @@ struct ContentView: View {
     
     var body: some View {
         VStack (alignment: .center) {
-            formatHeader()
-            formatResults(tipTextview: tipResultValue, totalTextview: totalResultValue)
+            header()
+            results(tip: tip, total: total)
             Group {
                 HStack {
-                    TextField(billInfoLabel.text, text: $billInputStr, onEditingChanged: { _ in
-                        self.billValue = atof(self.billInputStr)
+                    TextField("enter the subtotal amount in USD", text: $usrSubtotal, onEditingChanged: { _ in
+                        check.getSubtotal(usrSubtotal: usrSubtotal)
                         self.btnVisible     = true
+                        subtotalValueStyle.setColor(visible: visible)
+                        subtotalLabelStyle.setColor(visible: visible)
                     })
-                    .font(billInfoLabel.font)
+                    .font(defaultStyle.font)
                     .frame(alignment: .leading)
-                    .accentColor(billInfoLabel.color)
+                    .accentColor(defaultStyle.color)
                     .keyboardType(.decimalPad)
                     
                     Button("enter") {
                         self.hideKeyboard()
-                        self.billInputStr = ""
-                        self.btnVisible   = false
+                        self.usrSubtotal = ""
+                        self.btnVisible  = false
+                        
+                        
                     }
                     .font(.headline)
                     .frame(alignment: .center)
-                    .foregroundColor(Color.blue.opacity(buttonOpacity))
+                    .foregroundColor(Color.blue.opacity(btnVisible ? 100 : 0))
                     .disabled(!btnVisible)
                 }
                 .padding()
                 
                 HStack (alignment: .center) {
-                    formatTextView(textview: billResultLabel)
-                    formatTextView(textview: billResultValue)
+                    text(str: "subtotal: ", style: subtotalLabelStyle)
+                    text(str: subtotal, style: subtotalValueStyle)
                 }
-            
-                formatDivider(color: .green)
+                
+                divider()
+                
             }
-            formatSliderInput(percentValue: $percentValue, percentTextview: percentResultValue)
+            slider(percent: $check.percent, str: percent)
         }
         .padding()
         .frame(width: 392, height: 820)
