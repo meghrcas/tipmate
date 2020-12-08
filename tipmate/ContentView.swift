@@ -21,78 +21,39 @@ extension View {
 }
 #endif
 
-class Check: ObservableObject {
-    @Published var subtotal : Double = 0
-    @Published var percent  : Double = 15
-    
-    func getSubtotal(usrSubtotal: String) {
-        subtotal = atof(usrSubtotal)
-    }
-    
-    func getTip() -> Double {
-        return subtotal * (percent / 100)
-    }
-    
-    func getTotal() -> Double {
-        return subtotal + getTip()
-    }
-    
-}
-
 struct ContentView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var check = Check()
-    @State var usrSubtotal: String = ""
-    @State var isVisible: Bool = false
-    @State var btnVisible : Bool = false
     
-    var visible: Bool {
+    // declare variables
+    @Environment(\.colorScheme) var colorScheme     // monitors device appearance mode
+    @State var inputStr: String = ""                // empty string to store TextField input
+    @State var btnVisible : Bool = false            // monitors button visibility
+    @ObservedObject var check = Check()             // new instance of Check class
+    
+    var subtotalVisible: Bool {                     // handles subtotal text visibility (true for nonzero subtotal amounts)
         return (check.subtotal > 0 ? true : false)
     }
 
-    
-    private var darkModeEnabled: Bool {
+    var darkModeEnabled: Bool {                     // handles application appearance mode
         return (colorScheme == .dark) ? true : false
     }
     
-    private var tip: String {
-        let str = currencyFormatter.string(from: NSNumber(value: check.getTip())) ?? "--"
-        return str
-    }
-    
-    private var total: String {
-        let str = currencyFormatter.string(from: NSNumber(value: check.getTotal())) ?? "--"
-        return str
-    }
-    
-    private var subtotal: String {
-        let str = "$" + String(format: "%.2f", check.subtotal)
-        return str
-    }
-
-    private var percent: String {
-        let str = String(format: "%.0f", check.percent) + "%"
-        return str
-    }
-
-   private var currencyFormatter: NumberFormatter = {
-        let f = NumberFormatter()
-        f.isLenient = true              // allow no currency symbol, extra digits, etc
-        f.numberStyle = .currency
-        return f
-    }()
-    
     var body: some View {
         VStack (alignment: .center) {
+            // insert the formatted title and subtitle text views
             header()
-            results(tip: tip, total: total)
+            
+            // insert the formatted tip and total views
+            results(tip: check.getTip(), total: check.getTotal())
+            
+            // format and insert the subtotal views (textfield, button, text) as a group
             Group {
                 HStack {
-                    TextField("enter the subtotal amount in USD", text: $usrSubtotal, onEditingChanged: { _ in
-                        check.getSubtotal(usrSubtotal: usrSubtotal)
-                        self.btnVisible     = true
-                        subtotalValueStyle.setColor(visible: visible)
-                        subtotalLabelStyle.setColor(visible: visible)
+                    TextField("enter the subtotal amount in USD", text: $inputStr, onEditingChanged: { _ in
+                        // display the enter button on editing changes
+                        self.btnVisible = true
+                        
+                        // call the setSubtotal function to store the user input on editing changes
+                        check.setSubtotal(str: inputStr)
                     })
                     .font(defaultStyle.font)
                     .frame(alignment: .leading)
@@ -100,31 +61,32 @@ struct ContentView: View {
                     .keyboardType(.decimalPad)
                     
                     Button("enter") {
+                        // hide the keyboard and button, and clear the input string on each button press
                         self.hideKeyboard()
-                        self.usrSubtotal = ""
+                        self.inputStr = ""
                         self.btnVisible  = false
-                        
-                        
                     }
                     .font(.headline)
                     .frame(alignment: .center)
+                    // modify button functionality and visibility using btnVisible
                     .foregroundColor(Color.blue.opacity(btnVisible ? 100 : 0))
                     .disabled(!btnVisible)
                 }
                 .padding()
+
+                // insert the formatted subtotal text views
+                input(subtotal: check.getSubtotal(), visible: subtotalVisible)
                 
-                HStack (alignment: .center) {
-                    text(str: "subtotal: ", style: subtotalLabelStyle)
-                    text(str: subtotal, style: subtotalValueStyle)
-                }
-                
+                // insert a formatted divider
                 divider()
-                
             }
-            slider(percent: $check.percent, str: percent)
+            
+            // insert the formatted tip percentage views (text and slider)
+            slider(percent: $check.percent, str: check.getPercent())
         }
         .padding()
         .frame(width: 392, height: 820)
+        // modify the background color using darkModeEnabled
         .background(darkModeEnabled ? Color.blue.opacity(0.10) : .white)
         .overlay(RoundedRectangle (cornerRadius: 15.0)
             .stroke(lineWidth: 2.0)

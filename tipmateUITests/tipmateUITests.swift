@@ -6,9 +6,15 @@
 //
 
 import XCTest
+var app: XCUIApplication!
 
 class tipmateUITests: XCTestCase {
 
+    override func setUp() {
+        app = XCUIApplication()
+        app.launch()
+    }
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -22,13 +28,32 @@ class tipmateUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    // test subtotal amount "50.00" with default tip percentage
+    func testTextField() throws {
+        let expectedTipStr = "$7.50"
+        let expectedTotalStr = "$57.50"
+        let expectedSubtotalStr = "$50.00"
+        let subtotalField = app.textFields["enter the subtotal amount in USD"]
+        //XCTAssertFalse(app.staticTexts["subtotal: "].//textColor)
+        XCTAssertFalse(app.buttons["enter"].isEnabled)
+        subtotalField.tap()
+        XCTAssert(app.buttons["enter"].isEnabled)
+        subtotalField.typeText("50.00")
+        app.buttons["enter"].tap()
+        XCTAssertFalse(app.buttons["enter"].isEnabled)
+        XCTAssert(app.staticTexts[expectedTipStr].isHittable)
+        XCTAssert(app.staticTexts[expectedTotalStr].isHittable)
+        //XCTAssert(app.staticTexts["subtotal: "].isHittable)
+        XCTAssert(app.staticTexts[expectedSubtotalStr].isHittable)
+    }
+    
+    // test slider functionality using the minimum and maximum values
+    func testSlider() throws {
+        XCTAssert(app.staticTexts["15%"].isHittable)
+        app.sliders["0.15"].adjust(toNormalizedSliderPosition: 0)
+        XCTAssert(app.staticTexts["0%"].isHittable)
+        app.sliders["0"].adjust(toNormalizedSliderPosition: 1)
+        XCTAssert(app.staticTexts["100%"].isHittable)
     }
 
     func testLaunchPerformance() throws {
