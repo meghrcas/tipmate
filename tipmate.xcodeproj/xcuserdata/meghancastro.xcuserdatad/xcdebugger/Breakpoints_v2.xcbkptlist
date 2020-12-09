@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A305631C-08F0-41A9-8FE8-879AA9B1A96D"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68B05698-DA70-479B-B24D-08FEA5999777"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tipmateUITests/tipmateUITests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "tipmateUITests"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "68B05698-DA70-479B-B24D-08FEA5999777 - ea5c9ca2419eadb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tipmateUITests.tipmateUITests.app.getter : Swift.Optional&lt;__C.XCUIApplication&gt;"
+                  moduleName = "tipmateUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/meghancastro/Documents/CIS350/tipmate/tipmateUITests/tipmateUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "68B05698-DA70-479B-B24D-08FEA5999777 - 70bdd8da6831a9cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tipmateUITests.tipmateUITests.app.setter : Swift.Optional&lt;__C.XCUIApplication&gt;"
+                  moduleName = "tipmateUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/meghancastro/Documents/CIS350/tipmate/tipmateUITests/tipmateUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "68B05698-DA70-479B-B24D-08FEA5999777 - d5bdbbb2e6856027"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tipmateUITests.tipmateUITests.app.modify : Swift.Optional&lt;__C.XCUIApplication&gt;"
+                  moduleName = "tipmateUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/meghancastro/Documents/CIS350/tipmate/tipmateUITests/tipmateUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "68B05698-DA70-479B-B24D-08FEA5999777 - a553cb66add793b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tipmateUITests.tipmateUITests.app.modify : Swift.Optional&lt;__C.XCUIApplication&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "tipmateUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/meghancastro/Documents/CIS350/tipmate/tipmateUITests/tipmateUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "68B05698-DA70-479B-B24D-08FEA5999777 - d2886addeba5208"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tipmateUITests.tipmateUITests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; tipmateUITests.tipmateUITests"
+                  moduleName = "tipmateUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/meghancastro/Documents/CIS350/tipmate/tipmateUITests/tipmateUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "68B05698-DA70-479B-B24D-08FEA5999777 - a47f2ddcdf893dec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tipmateUITests.tipmateUITests.init(selector: ObjectiveC.Selector) -&gt; tipmateUITests.tipmateUITests"
+                  moduleName = "tipmateUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/meghancastro/Documents/CIS350/tipmate/tipmateUITests/tipmateUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "68B05698-DA70-479B-B24D-08FEA5999777 - ae459dd6a0e794f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tipmateUITests.tipmateUITests.init() -&gt; tipmateUITests.tipmateUITests"
+                  moduleName = "tipmateUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/meghancastro/Documents/CIS350/tipmate/tipmateUITests/tipmateUITests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "308C4028-F097-4303-A2F9-2EE15D92371E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tipmateTests/tipmateTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "setUp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6C0526F-404F-4889-8C51-58FEA507AC9A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tipmateTests/tipmateTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "testSetSubtotalFunc()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F484707-1074-45DB-8295-4A891433A272"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tipmateTests/tipmateTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "testInvalidInputStr()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2CF1AD15-B93D-4A66-82E8-F491D511C8D6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tipmate/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "subtotalVisible"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
