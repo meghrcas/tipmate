@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+/// this class is used to calculate and monitor the Check variables (subtotal, tip percentage, tip, total)
 public class Check: ObservableObject {
     
     // declare variables
@@ -20,7 +21,6 @@ public class Check: ObservableObject {
     var total:    Double
     var formatter: NumberFormatter
   
-    // initialize variables using default values
     init(formatter: @escaping () -> NumberFormatter = { () -> NumberFormatter in
         let nf = NumberFormatter()
         nf.isLenient = true
@@ -35,31 +35,46 @@ public class Check: ObservableObject {
         self.formatter = formatter()
     }
     
-    // setSubtotal function - updates the subtotal value using the input string (0.00 -> "0.00")
+    /**
+     This function sets the subtotal value using the input string
+     */
+
     func setSubtotal() {
         let subtotal: Double? = atof(self.inputStr)
         self.subtotal = subtotal!
     }
     
-    // getSubtotal function - returns the subtotal value as a formatted string (0.00 -> "$0.00")
+    /**
+     This function converts the subtotal value (double) to a currency string (0.00 -> "$0.00")
+     - returns: subtotal as a formatted string ("$0.00")
+     */
     func getSubtotal() -> String {
         let num: NSNumber? = NSNumber(value: self.subtotal)
         return self.formatter.string(from: num!)!
     }
     
-    // getPercent function - returns the percent value as a formatted string (0.00 -> "0%")
+    /**
+     This function converts the percent value (double) to a formatted string (0.00 -> "0%")
+     - returns: percent as a formatted string ("0%")
+     */
     func getPercent() -> String {
         return String(format: "%.0f", self.percent) + "%"
     }
     
-    // getTip function - calculates and returns the tip value as a formatted string (0.00 -> "$0.00")
+    /**
+     this function calculates and converts the tip value (double) to a currency string (0.00 -> "0.00")
+     - returns: tip as a formatted string ("$0.00")
+     */
     func getTip() -> String {
         self.tip = self.subtotal * (self.percent / 100)
         let num: NSNumber? = NSNumber(value: self.tip)
         return self.formatter.string(from: num!)!
     }
     
-    // getTotal function - calculates and returns the total value as a formatted string (0.00 -> "0.00")
+    /**
+     This function calculates and converts the total value (double) to a currency string (0.00 -> "0.00")
+     - returns: total as a formatted string ("$0.00")
+     */
     func getTotal() -> String {
         self.total = self.subtotal + self.tip
         let num: NSNumber? = NSNumber(value: self.total)

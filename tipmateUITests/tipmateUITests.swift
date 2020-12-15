@@ -17,30 +17,10 @@ class tipmateUITests: XCTestCase {
     }
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
-    // test hideKeyboard function
-    func testHideKeyboardFunc() throws {
-        let enterBtn = app.buttons["enter"]
-        let subtotalField = app.textFields.element//["enter the subtotal amount in USD"]
-        
-        XCTAssertFalse(enterBtn.isEnabled)
-        subtotalField.tap()
-
-        subtotalField.typeText("2")
-        XCTAssertTrue(enterBtn.isEnabled)
-        enterBtn.tap()
-        XCTAssertFalse(subtotalField.isSelected)
     }
     
     // test subtotal amount "50.00" with default tip percentage
@@ -50,20 +30,15 @@ class tipmateUITests: XCTestCase {
         let expectedSubtotalStr = "$50.00"
         let subtotalField = app.textFields.element//["enter the subtotal amount in USD"]
         XCTAssertFalse(app.buttons["enter"].isEnabled)
-        
         subtotalField.tap()
         XCTAssert(subtotalField.exists)
         XCTAssert(subtotalField.label.isEmpty)
-       // XCTAssert(subtotalField.keyboardType)
-
         XCTAssert(app.buttons["enter"].isEnabled)
         subtotalField.typeText("50.00")
-
         app.buttons["enter"].tap()
-        
         XCTAssertFalse(app.buttons["enter"].isEnabled)
         XCTAssert(subtotalField.label.isEmpty)
-
+        XCTAssertFalse(subtotalField.isSelected)
         XCTAssert(app.staticTexts[expectedTipStr].isHittable)
         XCTAssert(app.staticTexts[expectedTotalStr].isHittable)
         XCTAssert(app.staticTexts[expectedSubtotalStr].isHittable)

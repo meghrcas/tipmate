@@ -6,23 +6,24 @@
 //
 //  
 
-// import files
 import Foundation
 import SwiftUI
 
-// declare Style struct - used to format text components
+
+/// Style struct is used to define text styles
 struct Style {
     var font:   Font
     var weight: Font.Weight
     var color:  Color
     
-    // setColor function - updates the color using visible
+    /// setColor function sets the color variable
+    /// - Parameter visible: boolean value representing text visibility
     mutating func setColor(visible: Bool) {
         color = visible ? .green : .white
     }
 }
 
-// define Style variables for all text components
+/// define styles to be used throughout the application
 var titleStyle          = Style(font: .largeTitle, weight: .bold,    color: .orange)
 var subtitleStyle       = Style(font: .headline,   weight: .bold,    color: Color(UIColor.placeholderText))
 var tipValueStyle       = Style(font: .title,      weight: .regular, color: .green)
@@ -35,7 +36,8 @@ var percentValueStyle   = Style(font: .headline,   weight: .regular, color: .gre
 var defaultStyle        = Style(font: .headline,   weight: .bold,    color: Color(UIColor.placeholderText))
 
 
-// header function - formats and returns the application header
+/// formats the application header
+/// - Returns: view containing the header text views
 func header() -> some View {
     Group {
         VStack (alignment: .center) {
@@ -46,14 +48,19 @@ func header() -> some View {
     }
 }
 
-// divider function - formats and returns a horizontal divider
+/// formats a horizontal divider
+/// - Returns: formatted horizontal divider
 func divider() -> some View {
     Divider()
         .background(Color.green)
         .frame(alignment: .center)
 }
 
-// text function - formats and returns a text view using the provided string and style
+/// formats a text view using the provided text and style
+/// - Parameters:
+///   - str: text to be displayed
+///   - style: text style
+/// - Returns: formatted text view
 func text(str: String, style: Style) -> some View {
     Text(str)
         .font(style.font)
@@ -62,9 +69,12 @@ func text(str: String, style: Style) -> some View {
         .frame(alignment: .center)
 }
 
-// input function - formats and returns the subtotal text views as a group
+/// formats the subtotal input text views
+/// - Parameters:
+///   - subtotal: string to be displayed
+///   - visible: boolean value, determines text color
+/// - Returns: formatted subtotal text views as a group
 func input(subtotal: String, visible: Bool) -> some View {
-    // update the subtotal styles
     subtotalValueStyle.setColor(visible: visible)
     subtotalLabelStyle.setColor(visible: visible)
     
@@ -76,7 +86,11 @@ func input(subtotal: String, visible: Bool) -> some View {
     }
 }
 
-// results function - formats and returns the tip and total text views as a group
+/// formats the tip and total text views
+/// - Parameters:
+///   - tip: string to be displayed
+///   - total: string to be displayed
+/// - Returns: formatted tip and total text views as a group
 func results(tip: String, total: String) -> some View {
     Group {    
         divider()
@@ -99,6 +113,12 @@ func results(tip: String, total: String) -> some View {
 }
 
 // slider function - formats and returns the tip percentage text and slider as a group
+
+/// formats the tip percentage text views and slider
+/// - Parameters:
+///   - percent: tip percentage slider input
+///   - str: string to be displayed
+/// - Returns: tip percentage text views and slider view as a group
 func slider(percent: Binding<Double>, str: String) -> some View {
     Group {
         text(str: "select the desired tip percentage", style: defaultStyle)
@@ -119,3 +139,5 @@ func slider(percent: Binding<Double>, str: String) -> some View {
             .padding(.bottom, 10)
     }
 }
+
+
